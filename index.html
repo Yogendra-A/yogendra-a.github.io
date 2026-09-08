@@ -7,7 +7,7 @@
   <meta name="author" content="Yogendra A">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Yogendra A | AI/ML & Software Engineer">
-  <meta property="og:description" content="AI/ML and software engineering portfolio — AI agents, RAG, backend systems, audio intelligence, and production-oriented Python."
+  <meta property="og:description" content="AI/ML and software engineering portfolio — AI agents, RAG, backend systems, audio intelligence, and production-oriented Python.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yogendra-a.github.io/">
   <link rel="canonical" href="https://yogendra-a.github.io/">
@@ -19,470 +19,110 @@
 
   <style>
     :root {
-      --bg: #07080d;
-      --surface: #0d1018;
-      --surface-2: #111522;
-      --border: rgba(255,255,255,.09);
-      --border-hover: rgba(0,212,255,.42);
-      --text: #f5f7fb;
-      --muted: #9aa4b5;
-      --muted-2: #6f7a8c;
-      --accent: #00d4ff;
-      --accent-soft: rgba(0,212,255,.10);
-      --accent-glow: rgba(0,212,255,.20);
-      --max: 1120px;
-      --radius: 16px;
-      --ease: 220ms cubic-bezier(.2,.8,.2,1);
+      --bg: #07080d; --surface: #0d1018; --surface-2: #111522;
+      --border: rgba(255,255,255,.09); --border-hover: rgba(0,212,255,.42);
+      --text: #f5f7fb; --muted: #9aa4b5; --muted-2: #6f7a8c;
+      --accent: #00d4ff; --accent-soft: rgba(0,212,255,.10);
+      --max: 1120px; --radius: 16px; --ease: 220ms cubic-bezier(.2,.8,.2,1);
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 15% 10%, rgba(0,212,255,.08), transparent 28%),
-        radial-gradient(circle at 85% 40%, rgba(45,91,255,.07), transparent 28%),
-        var(--bg);
-      color: var(--text);
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    ::selection { background: var(--accent); color: #031015; }
-
-    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-
-    .nav {
-      position: fixed;
-      inset: 0 0 auto;
-      z-index: 50;
-      height: 70px;
-      border-bottom: 1px solid transparent;
-      transition: var(--ease);
-    }
-    .nav.scrolled {
-      background: rgba(7,8,13,.82);
-      backdrop-filter: blur(16px);
-      border-bottom-color: var(--border);
-    }
-    .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
-    .logo { font-size: 1.05rem; font-weight: 800; letter-spacing: -.03em; }
-    .logo span { color: var(--accent); }
-    .nav-links { display: flex; align-items: center; gap: 26px; list-style: none; }
-    .nav-links a { color: var(--muted); font-size: .86rem; font-weight: 500; transition: var(--ease); }
-    .nav-links a:hover { color: var(--text); }
-    .nav-cta { color: var(--accent) !important; border: 1px solid rgba(0,212,255,.28); padding: 8px 13px; border-radius: 8px; }
-    .nav-cta:hover { background: var(--accent-soft); border-color: var(--accent); }
-    .menu { display: none; background: none; border: 0; color: var(--text); cursor: pointer; }
-
-    section { padding: 105px 0 20px; scroll-margin-top: 65px; }
-
-    .hero { min-height: 94vh; display: grid; place-items: center; padding-top: 125px; position: relative; }
-    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 70px; align-items: center; }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 9px; padding: 7px 11px;
-      border: 1px solid rgba(0,212,255,.20); background: var(--accent-soft);
-      border-radius: 999px; color: var(--accent); font-size: .76rem; font-weight: 700;
-      letter-spacing: .12em; text-transform: uppercase;
-    }
-    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
-    h1 { margin-top: 20px; font-size: clamp(3.1rem, 7vw, 5.7rem); line-height: .98; letter-spacing: -.065em; max-width: 760px; }
-    .hero h1 span { color: var(--accent); }
-    .hero-title { margin-top: 23px; color: #c5cbd6; font-size: clamp(1.2rem, 2.3vw, 1.55rem); font-weight: 500; }
-    .hero-copy { margin-top: 20px; max-width: 650px; color: var(--muted); font-size: 1.02rem; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
-      padding: 11px 17px; border-radius: 9px; border: 1px solid var(--border);
-      font-size: .88rem; font-weight: 600; transition: var(--ease);
-    }
-    .btn-primary { background: var(--accent); color: #031015; border-color: var(--accent); box-shadow: 0 8px 30px rgba(0,212,255,.16); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,212,255,.24); }
-    .btn-secondary { background: rgba(255,255,255,.02); color: var(--text); }
-    .btn-secondary:hover { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-2px); }
-
-    .hero-panel { position: relative; }
-    .terminal {
-      border: 1px solid var(--border); background: rgba(13,16,24,.82); border-radius: 18px;
-      box-shadow: 0 30px 80px rgba(0,0,0,.35), 0 0 60px rgba(0,212,255,.06); overflow: hidden;
-    }
-    .terminal-bar { display: flex; gap: 7px; padding: 13px 15px; border-bottom: 1px solid var(--border); }
-    .terminal-bar i { width: 8px; height: 8px; border-radius: 50%; background: #334052; }
-    .terminal-body { padding: 25px; font: 500 .83rem/1.9 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: #b9c4d3; }
-    .terminal-body .key { color: var(--accent); }
-    .terminal-body .value { color: #e7ebf2; }
-    .terminal-body .dim { color: #64748b; }
-    .terminal-line { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-    .section-head { margin-bottom: 34px; }
-    .section-label { color: var(--accent); text-transform: uppercase; letter-spacing: .14em; font-size: .74rem; font-weight: 700; }
-    .section-title { margin-top: 6px; font-size: clamp(2rem, 4vw, 2.8rem); letter-spacing: -.045em; }
-    .section-lead { margin-top: 10px; color: var(--muted); max-width: 700px; }
-
-    .about-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 22px; }
-    .card { background: rgba(13,16,24,.72); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: var(--ease); }
-    .card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
-    .about-copy p + p { margin-top: 16px; }
-    .about-copy p { color: var(--muted); }
-    .focus-list { display: grid; gap: 12px; }
-    .focus-item { display: flex; gap: 12px; align-items: flex-start; }
-    .focus-icon { width: 32px; height: 32px; display: grid; place-items: center; flex: 0 0 32px; color: var(--accent); border: 1px solid rgba(0,212,255,.18); border-radius: 8px; background: var(--accent-soft); font-size: .72rem; font-weight: 800; }
-    .focus-item strong { display: block; font-size: .9rem; }
-    .focus-item span { display: block; color: var(--muted-2); font-size: .78rem; margin-top: 2px; }
-
-    .experience { display: grid; grid-template-columns: 150px 1fr; gap: 28px; }
-    .experience-meta { color: var(--muted-2); font-size: .78rem; }
-    .experience-company { font-size: 1.15rem; font-weight: 700; }
-    .experience-role { margin-top: 3px; color: var(--accent); font-size: .88rem; font-weight: 600; }
-    .experience-date { margin-top: 10px; }
-    .bullet-list { list-style: none; display: grid; gap: 12px; }
-    .bullet-list li { position: relative; padding-left: 19px; color: var(--muted); font-size: .91rem; }
-    .bullet-list li::before { content: ''; position: absolute; left: 0; top: .72em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(0,212,255,.5); }
-    .skills-inline { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 7px; }
-    .tag { display: inline-flex; padding: 5px 9px; border: 1px solid var(--border); border-radius: 7px; color: #b8c1cf; font-size: .72rem; background: rgba(255,255,255,.02); }
-
-    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-    .project-card { display: flex; flex-direction: column; min-height: 330px; }
-    .project-card.featured { grid-column: 1 / -1; min-height: 360px; background: linear-gradient(135deg, rgba(0,212,255,.07), rgba(13,16,24,.78) 45%); }
-    .project-top { display: flex; justify-content: space-between; gap: 15px; align-items: flex-start; }
-    .project-type { color: var(--accent); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-    .project-links { display: flex; gap: 8px; }
-    .icon-link { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: 8px; color: var(--muted); font-size: .8rem; }
-    .icon-link:hover { color: var(--accent); border-color: var(--accent); }
-    .project-title { margin-top: 18px; font-size: 1.3rem; letter-spacing: -.025em; }
-    .project-card.featured .project-title { font-size: 1.55rem; }
-    .project-description { margin-top: 11px; color: var(--muted); font-size: .87rem; }
-    .metric-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 17px; }
-    .metric { padding: 7px 10px; border: 1px solid rgba(0,212,255,.16); background: rgba(0,212,255,.055); color: #c9f7ff; border-radius: 8px; font-size: .72rem; font-weight: 600; }
-    .project-footer { margin-top: auto; padding-top: 23px; display: flex; flex-wrap: wrap; gap: 7px; }
-
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .skill-group h3 { font-size: .92rem; }
-    .skill-group p { margin-top: 9px; color: var(--muted); font-size: .8rem; line-height: 1.8; }
-
-    .education-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .edu-title { font-size: 1rem; font-weight: 700; }
-    .edu-sub { margin-top: 4px; color: var(--accent); font-size: .82rem; }
-    .edu-meta { margin-top: 9px; color: var(--muted); font-size: .8rem; }
-
-    .contact { padding-bottom: 80px; }
-    .contact-card { text-align: center; padding: 50px 25px; background: linear-gradient(145deg, rgba(0,212,255,.07), rgba(13,16,24,.78)); }
-    .contact-card h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.05em; }
-    .contact-card p { max-width: 620px; margin: 12px auto 25px; color: var(--muted); }
-    .contact-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
-
-    footer { border-top: 1px solid var(--border); padding: 25px 0 35px; color: var(--muted-2); font-size: .75rem; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
-
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 900px) {
-      .hero-grid, .about-grid { grid-template-columns: 1fr; }
-      .hero { min-height: auto; padding-bottom: 60px; }
-      .hero-panel { max-width: 620px; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .project-card.featured { grid-column: auto; }
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 700px) {
-      .container { width: min(var(--max), calc(100% - 28px)); }
-      .nav-links { display: none; position: absolute; top: 69px; left: 0; right: 0; padding: 18px 20px 22px; flex-direction: column; align-items: flex-start; background: rgba(7,8,13,.96); border-bottom: 1px solid var(--border); }
-      .nav-links.open { display: flex; }
-      .menu { display: block; }
-      .nav-cta { display: none; }
-      .hero { padding-top: 105px; }
-      h1 { font-size: clamp(2.8rem, 15vw, 4rem); }
-      .hero-title { font-size: 1.05rem; }
-      .hero-copy { font-size: .92rem; }
-      section { padding-top: 80px; }
-      .experience { grid-template-columns: 1fr; gap: 14px; }
-      .skills-grid, .education-grid { grid-template-columns: 1fr; }
-      .card { padding: 22px; }
-      .terminal-body { padding: 20px; }
-      .footer-inner { flex-direction: column; }
-    }
+    body { min-height:100vh; background:radial-gradient(circle at 15% 10%,rgba(0,212,255,.08),transparent 28%),radial-gradient(circle at 85% 40%,rgba(45,91,255,.07),transparent 28%),var(--bg); color:var(--text); font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.65; overflow-x:hidden; }
+    a { color:inherit; text-decoration:none; } button { font:inherit; } ::selection { background:var(--accent); color:#031015; }
+    .container { width:min(var(--max),calc(100% - 40px)); margin:0 auto; }
+    .nav { position:fixed; inset:0 0 auto; z-index:50; height:70px; border-bottom:1px solid transparent; transition:var(--ease); }
+    .nav.scrolled { background:rgba(7,8,13,.82); backdrop-filter:blur(16px); border-bottom-color:var(--border); }
+    .nav-inner { height:100%; display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-size:1.05rem; font-weight:800; letter-spacing:-.03em; } .logo span { color:var(--accent); }
+    .nav-links { display:flex; align-items:center; gap:26px; list-style:none; }
+    .nav-links a { color:var(--muted); font-size:.86rem; font-weight:500; transition:var(--ease); }
+    .nav-links a:hover { color:var(--text); }
+    .nav-cta { color:var(--accent)!important; border:1px solid rgba(0,212,255,.28); padding:8px 13px; border-radius:8px; }
+    .nav-cta:hover { background:var(--accent-soft); border-color:var(--accent); }
+    .menu { display:none; background:none; border:0; color:var(--text); cursor:pointer; }
+    section { padding:105px 0 20px; scroll-margin-top:65px; }
+    .hero { min-height:94vh; display:grid; place-items:center; padding-top:125px; position:relative; }
+    .hero-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:70px; align-items:center; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; padding:7px 11px; border:1px solid rgba(0,212,255,.20); background:var(--accent-soft); border-radius:999px; color:var(--accent); font-size:.76rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    .status-dot { width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 12px var(--accent); }
+    h1 { margin-top:20px; font-size:clamp(3.1rem,7vw,5.7rem); line-height:.98; letter-spacing:-.065em; max-width:760px; } .hero h1 span { color:var(--accent); }
+    .hero-title { margin-top:23px; color:#c5cbd6; font-size:clamp(1.2rem,2.3vw,1.55rem); font-weight:500; }
+    .hero-copy { margin-top:20px; max-width:650px; color:var(--muted); font-size:1.02rem; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:11px 17px; border-radius:9px; border:1px solid var(--border); font-size:.88rem; font-weight:600; transition:var(--ease); }
+    .btn-primary { background:var(--accent); color:#031015; border-color:var(--accent); box-shadow:0 8px 30px rgba(0,212,255,.16); }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 36px rgba(0,212,255,.24); }
+    .btn-secondary { background:rgba(255,255,255,.02); color:var(--text); } .btn-secondary:hover { border-color:var(--accent); background:var(--accent-soft); transform:translateY(-2px); }
+    .hero-panel { position:relative; }
+    .terminal { border:1px solid var(--border); background:rgba(13,16,24,.82); border-radius:18px; box-shadow:0 30px 80px rgba(0,0,0,.35),0 0 60px rgba(0,212,255,.06); overflow:hidden; }
+    .terminal-bar { display:flex; gap:7px; padding:13px 15px; border-bottom:1px solid var(--border); } .terminal-bar i { width:8px; height:8px; border-radius:50%; background:#334052; }
+    .terminal-body { padding:25px; font:500 .83rem/1.9 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; color:#b9c4d3; }
+    .terminal-body .key { color:var(--accent); } .terminal-body .value { color:#e7ebf2; } .terminal-body .dim { color:#64748b; }
+    .terminal-line { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .section-head { margin-bottom:34px; } .section-label { color:var(--accent); text-transform:uppercase; letter-spacing:.14em; font-size:.74rem; font-weight:700; }
+    .section-title { margin-top:6px; font-size:clamp(2rem,4vw,2.8rem); letter-spacing:-.045em; } .section-lead { margin-top:10px; color:var(--muted); max-width:700px; }
+    .about-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:22px; }
+    .card { background:rgba(13,16,24,.72); border:1px solid var(--border); border-radius:var(--radius); padding:28px; transition:var(--ease); }
+    .card:hover { border-color:var(--border-hover); transform:translateY(-3px); }
+    .about-copy p + p { margin-top:16px; } .about-copy p { color:var(--muted); }
+    .focus-list { display:grid; gap:12px; } .focus-item { display:flex; gap:12px; align-items:flex-start; }
+    .focus-icon { width:32px; height:32px; display:grid; place-items:center; flex:0 0 32px; color:var(--accent); border:1px solid rgba(0,212,255,.18); border-radius:8px; background:var(--accent-soft); font-size:.72rem; font-weight:800; }
+    .focus-item strong { display:block; font-size:.9rem; } .focus-item span { display:block; color:var(--muted-2); font-size:.78rem; margin-top:2px; }
+    .experience { display:grid; grid-template-columns:150px 1fr; gap:28px; }
+    .experience-meta { color:var(--muted-2); font-size:.78rem; } .experience-company { font-size:1.15rem; font-weight:700; } .experience-role { margin-top:3px; color:var(--accent); font-size:.88rem; font-weight:600; } .experience-date { margin-top:10px; }
+    .bullet-list { list-style:none; display:grid; gap:12px; } .bullet-list li { position:relative; padding-left:19px; color:var(--muted); font-size:.91rem; }
+    .bullet-list li::before { content:''; position:absolute; left:0; top:.72em; width:5px; height:5px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px rgba(0,212,255,.5); }
+    .skills-inline { margin-top:18px; display:flex; flex-wrap:wrap; gap:7px; } .tag { display:inline-flex; padding:5px 9px; border:1px solid var(--border); border-radius:7px; color:#b8c1cf; font-size:.72rem; background:rgba(255,255,255,.02); }
+    .projects-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+    .project-card { display:flex; flex-direction:column; min-height:330px; } .project-card.featured { grid-column:1/-1; min-height:360px; background:linear-gradient(135deg,rgba(0,212,255,.07),rgba(13,16,24,.78) 45%); }
+    .project-top { display:flex; justify-content:space-between; gap:15px; align-items:flex-start; } .project-type { color:var(--accent); font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    .project-links { display:flex; gap:8px; } .icon-link { width:34px; height:34px; display:grid; place-items:center; border:1px solid var(--border); border-radius:8px; color:var(--muted); font-size:.8rem; }
+    .icon-link:hover { color:var(--accent); border-color:var(--accent); } .project-title { margin-top:18px; font-size:1.3rem; letter-spacing:-.025em; } .project-card.featured .project-title { font-size:1.55rem; }
+    .project-description { margin-top:11px; color:var(--muted); font-size:.87rem; } .metric-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:17px; }
+    .metric { padding:7px 10px; border:1px solid rgba(0,212,255,.16); background:rgba(0,212,255,.055); color:#c9f7ff; border-radius:8px; font-size:.72rem; font-weight:600; }
+    .project-footer { margin-top:auto; padding-top:23px; display:flex; flex-wrap:wrap; gap:7px; }
+    .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; } .skill-group h3 { font-size:.92rem; } .skill-group p { margin-top:9px; color:var(--muted); font-size:.8rem; line-height:1.8; }
+    .education-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; } .edu-title { font-size:1rem; font-weight:700; } .edu-sub { margin-top:4px; color:var(--accent); font-size:.82rem; } .edu-meta { margin-top:9px; color:var(--muted); font-size:.8rem; }
+    .contact { padding-bottom:80px; } .contact-card { text-align:center; padding:50px 25px; background:linear-gradient(145deg,rgba(0,212,255,.07),rgba(13,16,24,.78)); }
+    .contact-card h2 { font-size:clamp(2rem,4vw,3rem); letter-spacing:-.05em; } .contact-card p { max-width:620px; margin:12px auto 25px; color:var(--muted); }
+    .contact-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; } footer { border-top:1px solid var(--border); padding:25px 0 35px; color:var(--muted-2); font-size:.75rem; }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; } .reveal { opacity:0; transform:translateY(18px); transition:opacity .65s ease,transform .65s ease; } .reveal.visible { opacity:1; transform:translateY(0); }
+    @media (max-width:900px) { .hero-grid,.about-grid { grid-template-columns:1fr; } .hero { min-height:auto; padding-bottom:60px; } .hero-panel { max-width:620px; } .projects-grid { grid-template-columns:1fr; } .project-card.featured { grid-column:auto; } .skills-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:700px) { .container { width:min(var(--max),calc(100% - 28px)); } .nav-links { display:none; position:absolute; top:69px; left:0; right:0; padding:18px 20px 22px; flex-direction:column; align-items:flex-start; background:rgba(7,8,13,.96); border-bottom:1px solid var(--border); } .nav-links.open { display:flex; } .menu { display:block; } .nav-cta { display:none; } .hero { padding-top:105px; } h1 { font-size:clamp(2.8rem,15vw,4rem); } .hero-title { font-size:1.05rem; } .hero-copy { font-size:.92rem; } section { padding-top:80px; } .experience { grid-template-columns:1fr; gap:14px; } .skills-grid,.education-grid { grid-template-columns:1fr; } .card { padding:22px; } .terminal-body { padding:20px; } .footer-inner { flex-direction:column; } }
   </style>
 </head>
-
 <body>
-  <header class="nav" id="nav">
-    <div class="container nav-inner">
-      <a class="logo" href="#top">Yogendra<span>.</span></a>
-      <nav aria-label="Primary navigation">
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a class="nav-cta" href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <button class="menu" id="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
-    </div>
-  </header>
+  <header class="nav" id="nav"><div class="container nav-inner"><a class="logo" href="#top">Yogendra<span>.</span></a><nav aria-label="Primary navigation"><ul class="nav-links" id="navLinks"><li><a href="#about">About</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#skills">Skills</a></li><li><a href="#education">Education</a></li><li><a class="nav-cta" href="#contact">Contact</a></li></ul></nav><button class="menu" id="menu" aria-label="Open navigation" aria-expanded="false">☰</button></div></header>
 
   <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="reveal">
-          <div class="eyebrow"><span class="status-dot"></span> Open to AI/ML & Software Engineering Roles</div>
-          <h1>Building <span>AI systems</span> that work in the real world.</h1>
-          <p class="hero-title">AI/ML Engineer · Python · Backend · LLMs · RAG · AI Agents</p>
-          <p class="hero-copy">I build reliable AI and backend systems — from model inference and retrieval pipelines to agent workflows, APIs, concurrency, and production-oriented engineering.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">View selected work →</a>
-            <a class="btn btn-secondary" href="https://github.com/Yogendra-A" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-            <a class="btn btn-secondary" href="https://www.linkedin.com/in/yogendra1624" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-          </div>
-        </div>
+    <section class="hero"><div class="container hero-grid"><div class="reveal"><div class="eyebrow"><span class="status-dot"></span> Open to AI/ML & Software Engineering Roles</div><h1>Building <span>AI systems</span> that work in the real world.</h1><p class="hero-title">AI/ML Engineer · Python · Backend · LLMs · RAG · AI Agents</p><p class="hero-copy">I build reliable AI and backend systems — from model inference and retrieval pipelines to agent workflows, APIs, concurrency, and production-oriented engineering.</p><div class="hero-actions"><a class="btn btn-primary" href="#projects">View selected work →</a><a class="btn btn-secondary" href="https://github.com/Yogendra-A" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="btn btn-secondary" href="https://www.linkedin.com/in/yogendra1624" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div><div class="hero-panel reveal"><div class="terminal"><div class="terminal-bar"><i></i><i></i><i></i></div><div class="terminal-body"><div class="terminal-line"><span class="dim">$</span> profile.load()</div><div class="terminal-line"><span class="key">focus</span>: <span class="value">AI systems + backend</span></div><div class="terminal-line"><span class="key">stack</span>: <span class="value">Python / PyTorch / FastAPI</span></div><div class="terminal-line"><span class="key">genai</span>: <span class="value">LLMs / RAG / Agents</span></div><div class="terminal-line"><span class="key">retrieval</span>: <span class="value">FAISS / semantic search</span></div><div class="terminal-line"><span class="key">systems</span>: <span class="value">AsyncIO / WebSockets / Docker</span></div><div class="terminal-line"><span class="key">internship</span>: <span class="value">LTTS · Audio Intelligence</span></div><div class="terminal-line"><span class="key">education</span>: <span class="value">PES University · CSE · 2026</span></div><div class="terminal-line"><span class="dim">$</span> status --ready</div></div></div></div></div></section>
 
-        <div class="hero-panel reveal">
-          <div class="terminal" aria-label="Technical profile summary">
-            <div class="terminal-bar"><i></i><i></i><i></i></div>
-            <div class="terminal-body">
-              <div class="terminal-line"><span class="dim">$</span> profile.load()</div>
-              <div class="terminal-line"><span class="key">focus</span>: <span class="value">AI systems + backend</span></div>
-              <div class="terminal-line"><span class="key">stack</span>: <span class="value">Python / PyTorch / FastAPI</span></div>
-              <div class="terminal-line"><span class="key">genai</span>: <span class="value">LLMs / RAG / Agents</span></div>
-              <div class="terminal-line"><span class="key">retrieval</span>: <span class="value">FAISS / semantic search</span></div>
-              <div class="terminal-line"><span class="key">systems</span>: <span class="value">AsyncIO / WebSockets / Docker</span></div>
-              <div class="terminal-line"><span class="key">internship</span>: <span class="value">LTTS · Audio Intelligence</span></div>
-              <div class="terminal-line"><span class="key">education</span>: <span class="value">PES University · CSE · 2026</span></div>
-              <div class="terminal-line"><span class="dim">$</span> status --ready</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section id="about"><div class="container"><div class="section-head reveal"><div class="section-label">01 / About</div><h2 class="section-title">Engineering first. AI where it helps.</h2><p class="section-lead">I care about the layer between a model and a useful product: APIs, data flow, retrieval, inference, reliability, testing, and the systems that make AI usable.</p></div><div class="about-grid"><div class="card about-copy reveal"><p>I’m a Computer Science graduate from PES University with hands-on experience across AI/ML systems and backend engineering. At L&T Technology Services, I worked on an edge-audio intelligence framework spanning 14 canonical processing tasks.</p><p>The work covered Python pipeline architecture, bounded concurrency, model integration, thread-safe caching, structured task failure isolation, and an agent decision layer with triage, synthesis, watchdog, persistent memory, calibration, investigation workflows, and deterministic fallback.</p><p>Outside the internship, I build end-to-end applications around RAG, speech, computer vision, APIs, databases, and real-time communication.</p></div><div class="card reveal"><div class="focus-list"><div class="focus-item"><div class="focus-icon">AI</div><div><strong>Applied AI</strong><span>LLMs, RAG, agents, model inference</span></div></div><div class="focus-item"><div class="focus-icon">BE</div><div><strong>Backend systems</strong><span>FastAPI, AsyncIO, WebSockets, APIs</span></div></div><div class="focus-item"><div class="focus-icon">ML</div><div><strong>ML engineering</strong><span>PyTorch, Hugging Face, Whisper, CNN-LSTM</span></div></div><div class="focus-item"><div class="focus-icon">SYS</div><div><strong>Reliability</strong><span>Testing, caching, failure isolation, offline paths</span></div></div></div></div></div></div></section>
 
-    <section id="about">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="section-label">01 / About</div>
-          <h2 class="section-title">Engineering first. AI where it helps.</h2>
-          <p class="section-lead">I care about the layer between a model and a useful product: APIs, data flow, retrieval, inference, reliability, testing, and the systems that make AI usable.</p>
-        </div>
-        <div class="about-grid">
-          <div class="card about-copy reveal">
-            <p>I’m a Computer Science graduate from PES University with hands-on experience across AI/ML systems and backend engineering. At L&T Technology Services, I worked on an edge-audio intelligence framework spanning 14 canonical processing tasks.</p>
-            <p>The work covered Python pipeline architecture, bounded concurrency, model integration, thread-safe caching, structured task failure isolation, and an agent decision layer with triage, synthesis, watchdog, persistent memory, calibration, investigation workflows, and deterministic fallback.</p>
-            <p>Outside the internship, I build end-to-end applications around RAG, speech, computer vision, APIs, databases, and real-time communication.</p>
-          </div>
-          <div class="card reveal">
-            <div class="focus-list">
-              <div class="focus-item"><div class="focus-icon">AI</div><div><strong>Applied AI</strong><span>LLMs, RAG, agents, model inference</span></div></div>
-              <div class="focus-item"><div class="focus-icon">BE</div><div><strong>Backend systems</strong><span>FastAPI, AsyncIO, WebSockets, APIs</span></div></div>
-              <div class="focus-item"><div class="focus-icon">ML</div><div><strong>ML engineering</strong><span>PyTorch, Hugging Face, Whisper, CNN-LSTM</span></div></div>
-              <div class="focus-item"><div class="focus-icon">SYS</div><div><strong>Reliability</strong><span>Testing, caching, failure isolation, offline paths</span></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section id="experience"><div class="container"><div class="section-head reveal"><div class="section-label">02 / Experience</div><h2 class="section-title">L&T Technology Services</h2><p class="section-lead">Intern · Audio Intelligence · Bengaluru · February 2026 – May 2026</p></div><div class="card experience reveal"><div class="experience-meta"><div class="experience-company">LTTS</div><div class="experience-role">Intern</div><div class="experience-date">Feb 2026<br>May 2026</div></div><div><ul class="bullet-list"><li>Engineered a canonical <strong>14-task edge-audio framework</strong> with typed result contracts, bounded concurrent execution, lazy thread-safe model caching, and structured task-failure isolation.</li><li>Integrated and benchmarked local <strong>Whisper base ASR</strong>: 3.20s warm mean, 3.26s P95, and 7.58s first-call latency on a 3-second CPU audio fixture.</li><li>Architected an AI decision layer with <strong>triage, synthesis, watchdog, persistent JSONL memory, calibration, investigation windows, and deterministic fallback</strong>; validated 13/13 tests including fault-injection scenarios.</li><li>Verified cached Whisper inference with <strong>network sockets blocked</strong> and consolidated task registration, cross-path coverage, model metadata, and regression tests.</li></ul><div class="skills-inline"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Whisper</span><span class="tag">Audio ML</span><span class="tag">AI Agents</span><span class="tag">Concurrency</span><span class="tag">Caching</span><span class="tag">DSP</span><span class="tag">Git</span></div></div></div></div></section>
 
-    <section id="experience">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="section-label">02 / Experience</div>
-          <h2 class="section-title">L&T Technology Services</h2>
-          <p class="section-lead">Intern · Audio Intelligence · Bengaluru · February 2026 – May 2026</p>
-        </div>
-        <div class="card experience reveal">
-          <div class="experience-meta">
-            <div class="experience-company">LTTS</div>
-            <div class="experience-role">Intern</div>
-            <div class="experience-date">Feb 2026<br>May 2026</div>
-          </div>
-          <div>
-            <ul class="bullet-list">
-              <li>Engineered a canonical <strong>14-task edge-audio framework</strong> with typed result contracts, bounded concurrent execution, lazy thread-safe model caching, and structured task-failure isolation.</li>
-              <li>Integrated and benchmarked local <strong>Whisper base ASR</strong>: 3.20s warm mean, 3.26s P95, and 7.58s first-call latency on a 3-second CPU audio fixture.</li>
-              <li>Architected an AI decision layer with <strong>triage, synthesis, watchdog, persistent JSONL memory, calibration, investigation windows, and deterministic fallback</strong>; validated 13/13 tests including fault-injection scenarios.</li>
-              <li>Verified cached Whisper inference with <strong>network sockets blocked</strong> and consolidated task registration, cross-path coverage, model metadata, and regression tests.</li>
-            </ul>
-            <div class="skills-inline">
-              <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Whisper</span><span class="tag">Audio ML</span><span class="tag">AI Agents</span><span class="tag">Concurrency</span><span class="tag">Caching</span><span class="tag">DSP</span><span class="tag">Git</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section id="projects"><div class="container"><div class="section-head reveal"><div class="section-label">03 / Selected Work</div><h2 class="section-title">Projects with technical depth.</h2><p class="section-lead">A mix of AI systems, retrieval, real-time backends, and software engineering. Source code is available where public.</p></div><div class="projects-grid">
+      <article class="card project-card featured reveal"><div class="project-top"><div class="project-type">Internship · AI Systems · Edge</div><div class="project-links"><a class="icon-link" href="https://github.com/yogishetty16/edge_audio_framework" target="_blank" rel="noopener noreferrer" aria-label="Edge Audio Framework GitHub">↗</a></div></div><h3 class="project-title">Edge Audio Framework</h3><p class="project-description">Modular Python framework for audio intelligence on headless edge devices. The architecture combines independent task modules, bounded execution, local model caching, structured results, and an agent decision layer for triage, synthesis, watchdog monitoring, memory, calibration, and investigations.</p><div class="metric-row"><span class="metric">14 canonical tasks</span><span class="metric">13/13 tests</span><span class="metric">3.20s warm ASR mean</span><span class="metric">3.26s ASR P95</span><span class="metric">Offline cache verification</span></div><div class="project-footer"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Whisper</span><span class="tag">Audio ML</span><span class="tag">DSP</span><span class="tag">AI Agents</span><span class="tag">ThreadPoolExecutor</span></div></article>
+      <article class="card project-card reveal"><div class="project-top"><div class="project-type">RAG · Voice · Backend</div><div class="project-links"><a class="icon-link" href="https://github.com/Yogendra-A/VoiceRAG" target="_blank" rel="noopener noreferrer" aria-label="VoiceRAG GitHub">↗</a></div></div><h3 class="project-title">VoiceRAG</h3><p class="project-description">Voice-driven knowledge assistant with a FastAPI backend for document ingestion, semantic chunking, FAISS retrieval, and Whisper transcription. SSE provides streaming responses to the frontend.</p><div class="project-footer"><span class="tag">FastAPI</span><span class="tag">FAISS</span><span class="tag">Whisper</span><span class="tag">RAG</span><span class="tag">React</span><span class="tag">SSE</span></div></article>
+      <article class="card project-card reveal"><div class="project-top"><div class="project-type">Real-time ML · Computer Vision</div><div class="project-links"><a class="icon-link" href="https://github.com/Yogendra-A/Real-Time-Breathing-and-Posture-Analysis-for-Pranayama" target="_blank" rel="noopener noreferrer" aria-label="Pranayama Trainer GitHub">↗</a></div></div><h3 class="project-title">Pranayama Trainer</h3><p class="project-description">Real-time breathing and posture analysis application using concurrent webcam and audio streams. A CNN-LSTM classifier was internally validated at 78.4% test accuracy, with session data persisted in Firebase.</p><div class="metric-row"><span class="metric">78.4% test accuracy</span></div><div class="project-footer"><span class="tag">Python</span><span class="tag">AsyncIO</span><span class="tag">WebSockets</span><span class="tag">CNN-LSTM</span><span class="tag">Firebase</span></div></article>
+      <article class="card project-card reveal"><div class="project-top"><div class="project-type">Software Engineering · Database</div><div class="project-links"><a class="icon-link" href="https://github.com/Yogendra-A/Recruitment-Management-System" target="_blank" rel="noopener noreferrer" aria-label="Recruitment Management System GitHub">↗</a></div></div><h3 class="project-title">Recruitment Management System</h3><p class="project-description">Python/MySQL application with a normalized 5-table schema, foreign-key constraints, application-state validation, business-rule triggers, stored procedures, and separate recruiter/candidate workflows.</p><div class="project-footer"><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">SQL</span><span class="tag">Tkinter</span></div></article>
+      <article class="card project-card reveal"><div class="project-top"><div class="project-type">Computer Vision · IoT</div><div class="project-links"><a class="icon-link" href="https://github.com/Yogendra-A/Drowsiness-Detection-Alert-System-with-Arduino-and-Python" target="_blank" rel="noopener noreferrer" aria-label="Drowsiness Detection GitHub">↗</a></div></div><h3 class="project-title">Driver Drowsiness Detection</h3><p class="project-description">Computer vision system using MediaPipe facial landmarks to compute eye-closure signals and trigger graded hardware alerts through Arduino. Event data was logged to ThingSpeak for monitoring.</p><div class="project-footer"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">MediaPipe</span><span class="tag">Arduino</span><span class="tag">ThingSpeak</span></div></article>
+    </div><p style="margin-top:18px;color:var(--muted-2);font-size:.72rem;">Benchmark note: Edge Audio ASR measurements are from a 3-second CPU fixture; they are not presented as real-time throughput.</p></div></section>
 
-    <section id="projects">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="section-label">03 / Selected Work</div>
-          <h2 class="section-title">Projects with technical depth.</h2>
-          <p class="section-lead">A mix of AI systems, retrieval, real-time backends, and software engineering. Source code is available where public.</p>
-        </div>
+    <section id="skills"><div class="container"><div class="section-head reveal"><div class="section-label">04 / Technical Stack</div><h2 class="section-title">Tools I actually build with.</h2></div><div class="skills-grid"><div class="card skill-group reveal"><h3>AI / ML</h3><p>Python · PyTorch · Hugging Face · Scikit-learn · Deep Learning · CNN-LSTM · Audio ML · DSP · Whisper · OpenCV · MediaPipe</p></div><div class="card skill-group reveal"><h3>Generative AI</h3><p>LLMs · RAG · AI Agents · LangChain · LangGraph · FAISS · Semantic Search · Vector Retrieval · Tool Calling</p></div><div class="card skill-group reveal"><h3>Backend</h3><p>FastAPI · Flask · REST APIs · AsyncIO · WebSockets · Server-Sent Events · Python services · API design</p></div><div class="card skill-group reveal"><h3>Data</h3><p>SQL · MySQL · MongoDB · Firebase Firestore · Schema Design · Triggers · Stored Procedures</p></div><div class="card skill-group reveal"><h3>Engineering</h3><p>Git · GitHub · Docker · Linux · CI/CD · Concurrency · Caching · Testing · Debugging · Failure Isolation</p></div><div class="card skill-group reveal"><h3>Cloud / Frontend</h3><p>AWS · GCP · React · Vite · Tkinter · GitHub Actions</p></div></div></div></section>
 
-        <div class="projects-grid">
-          <article class="card project-card featured reveal">
-            <div class="project-top">
-              <div class="project-type">Internship · AI Systems · Edge</div>
-              <div class="project-links"><a class="icon-link" href="https://github.com/yogishetty16/edge_audio_framework" target="_blank" rel="noopener noreferrer" aria-label="Edge Audio Framework GitHub">↗</a></div>
-            </div>
-            <h3 class="project-title">Edge Audio Framework</h3>
-            <p class="project-description">Modular Python framework for audio intelligence on headless edge devices. The architecture combines independent task modules, bounded execution, local model caching, structured results, and an agent decision layer for triage, synthesis, watchdog monitoring, memory, calibration, and investigations.</p>
-            <div class="metric-row">
-              <span class="metric">14 canonical tasks</span>
-              <span class="metric">13/13 tests</span>
-              <span class="metric">3.20s warm ASR mean</span>
-              <span class="metric">3.26s ASR P95</span>
-              <span class="metric">Offline cache verification</span>
-            </div>
-            <div class="project-footer">
-              <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Whisper</span><span class="tag">Audio ML</span><span class="tag">DSP</span><span class="tag">AI Agents</span><span class="tag">ThreadPoolExecutor</span>
-            </div>
-          </article>
+    <section id="education"><div class="container"><div class="section-head reveal"><div class="section-label">05 / Education & Credentials</div><h2 class="section-title">Foundation + continuous learning.</h2></div><div class="education-grid"><div class="card reveal"><div class="edu-title">PES University, Bengaluru</div><div class="edu-sub">B.Tech — Computer Science & Engineering</div><div class="edu-meta">September 2022 – August 2026<br>Coursework: DSA, Machine Learning, Database Systems, Operating Systems, Computer Networks</div></div><div class="card reveal"><div class="edu-title">LangChain Deep Agents</div><div class="edu-sub">Certificate · March 2026</div><div class="edu-meta">Agentic AI workflows using LangGraph, tool calling, and multi-step reasoning patterns.<br><br>Certificate ID: 9iybz4lmal</div></div></div><div class="card reveal" style="margin-top:18px;"><div class="edu-title">Goldman Sachs Software Engineering Virtual Experience</div><div class="edu-meta">IT security simulation focused on password hashing, algorithm migration, and password policy improvements.</div></div></div></section>
 
-          <article class="card project-card reveal">
-            <div class="project-top">
-              <div class="project-type">RAG · Voice · Backend</div>
-              <div class="project-links"><a class="icon-link" href="https://github.com/Yogendra-A/VoiceRAG" target="_blank" rel="noopener noreferrer" aria-label="VoiceRAG GitHub">↗</a></div>
-            </div>
-            <h3 class="project-title">VoiceRAG</h3>
-            <p class="project-description">Voice-driven knowledge assistant with a FastAPI backend for document ingestion, semantic chunking, FAISS retrieval, and Whisper transcription. SSE provides streaming responses to the frontend.</p>
-            <div class="project-footer"><span class="tag">FastAPI</span><span class="tag">FAISS</span><span class="tag">Whisper</span><span class="tag">RAG</span><span class="tag">React</span><span class="tag">SSE</span></div>
-          </article>
-
-          <article class="card project-card reveal">
-            <div class="project-top">
-              <div class="project-type">Real-time ML · Computer Vision</div>
-              <div class="project-links"><a class="icon-link" href="https://github.com/Yogendra-A/Real-Time-Breathing-and-Posture-Analysis-for-Pranayama" target="_blank" rel="noopener noreferrer" aria-label="Pranayama Trainer GitHub">↗</a></div>
-            </div>
-            <h3 class="project-title">Pranayama Trainer</h3>
-            <p class="project-description">Real-time breathing and posture analysis application using concurrent webcam and audio streams. A CNN-LSTM classifier was internally validated at 78.4% test accuracy, with session data persisted in Firebase.</p>
-            <div class="metric-row"><span class="metric">78.4% test accuracy</span></div>
-            <div class="project-footer"><span class="tag">Python</span><span class="tag">AsyncIO</span><span class="tag">WebSockets</span><span class="tag">CNN-LSTM</span><span class="tag">Firebase</span></div>
-          </article>
-
-          <article class="card project-card reveal">
-            <div class="project-top">
-              <div class="project-type">Software Engineering · Database</div>
-              <div class="project-links"><a class="icon-link" href="https://github.com/Yogendra-A/Recruitment-Management-System" target="_blank" rel="noopener noreferrer" aria-label="Recruitment Management System GitHub">↗</a></div>
-            </div>
-            <h3 class="project-title">Recruitment Management System</h3>
-            <p class="project-description">Python/MySQL application with a normalized 5-table schema, foreign-key constraints, application-state validation, business-rule triggers, stored procedures, and separate recruiter/candidate workflows.</p>
-            <div class="project-footer"><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">SQL</span><span class="tag">Tkinter</span></div>
-          </article>
-
-          <article class="card project-card reveal">
-            <div class="project-top">
-              <div class="project-type">Computer Vision · IoT</div>
-              <div class="project-links"><a class="icon-link" href="https://github.com/Yogendra-A/Drowsiness-Detection-Alert-System-with-Arduino-and-Python" target="_blank" rel="noopener noreferrer" aria-label="Drowsiness Detection GitHub">↗</a></div>
-            </div>
-            <h3 class="project-title">Driver Drowsiness Detection</h3>
-            <p class="project-description">Computer vision system using MediaPipe facial landmarks to compute eye-closure signals and trigger graded hardware alerts through Arduino. Event data was logged to ThingSpeak for monitoring.</p>
-            <div class="project-footer"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">MediaPipe</span><span class="tag">Arduino</span><span class="tag">ThingSpeak</span></div>
-          </article>
-        </div>
-        <p style="margin-top:18px;color:var(--muted-2);font-size:.72rem;">Benchmark note: Edge Audio ASR measurements are from a 3-second CPU fixture; they are not presented as real-time throughput.</p>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="section-label">04 / Technical Stack</div>
-          <h2 class="section-title">Tools I actually build with.</h2>
-        </div>
-        <div class="skills-grid">
-          <div class="card skill-group reveal"><h3>AI / ML</h3><p>Python · PyTorch · Hugging Face · Scikit-learn · Deep Learning · CNN-LSTM · Audio ML · DSP · Whisper · OpenCV · MediaPipe</p></div>
-          <div class="card skill-group reveal"><h3>Generative AI</h3><p>LLMs · RAG · AI Agents · LangChain · LangGraph · FAISS · Semantic Search · Vector Retrieval · Tool Calling</p></div>
-          <div class="card skill-group reveal"><h3>Backend</h3><p>FastAPI · Flask · REST APIs · AsyncIO · WebSockets · Server-Sent Events · Python services · API design</p></div>
-          <div class="card skill-group reveal"><h3>Data</h3><p>SQL · MySQL · MongoDB · Firebase Firestore · Schema Design · Triggers · Stored Procedures</p></div>
-          <div class="card skill-group reveal"><h3>Engineering</h3><p>Git · GitHub · Docker · Linux · CI/CD · Concurrency · Caching · Testing · Debugging · Failure Isolation</p></div>
-          <div class="card skill-group reveal"><h3>Cloud / Frontend</h3><p>AWS · GCP · React · Vite · Tkinter · GitHub Actions</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="education">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="section-label">05 / Education & Credentials</div>
-          <h2 class="section-title">Foundation + continuous learning.</h2>
-        </div>
-        <div class="education-grid">
-          <div class="card reveal">
-            <div class="edu-title">PES University, Bengaluru</div>
-            <div class="edu-sub">B.Tech — Computer Science & Engineering</div>
-            <div class="edu-meta">September 2022 – August 2026<br>Coursework: DSA, Machine Learning, Database Systems, Operating Systems, Computer Networks</div>
-          </div>
-          <div class="card reveal">
-            <div class="edu-title">LangChain Deep Agents</div>
-            <div class="edu-sub">Certificate · March 2026</div>
-            <div class="edu-meta">Agentic AI workflows using LangGraph, tool calling, and multi-step reasoning patterns.<br><br>Certificate ID: 9iybz4lmal</div>
-          </div>
-        </div>
-        <div class="card reveal" style="margin-top:18px;">
-          <div class="edu-title">Goldman Sachs Software Engineering Virtual Experience</div>
-          <div class="edu-meta">IT security simulation focused on password hashing, algorithm migration, and password policy improvements.</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="contact">
-      <div class="container">
-        <div class="card contact-card reveal">
-          <div class="section-label">06 / Contact</div>
-          <h2>Let's build something useful.</h2>
-          <p>I'm open to AI/ML, AI agent, backend, and software engineering opportunities. If you're building an AI product or a systems-heavy application, I'd be interested in hearing about it.</p>
-          <div class="contact-actions">
-            <a class="btn btn-primary" href="mailto:yogendra.a2416@gmail.com">Email me</a>
-            <a class="btn btn-secondary" href="https://www.linkedin.com/in/yogendra1624" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-            <a class="btn btn-secondary" href="https://github.com/Yogendra-A" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section id="contact" class="contact"><div class="container"><div class="card contact-card reveal"><div class="section-label">06 / Contact</div><h2>Let's build something useful.</h2><p>I'm open to AI/ML, AI agent, backend, and software engineering opportunities. If you're building an AI product or a systems-heavy application, I'd be interested in hearing about it.</p><div class="contact-actions"><a class="btn btn-primary" href="mailto:yogendra.a2416@gmail.com">Email me</a><a class="btn btn-secondary" href="https://www.linkedin.com/in/yogendra1624" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="btn btn-secondary" href="https://github.com/Yogendra-A" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></div></section>
   </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <span>© 2026 Yogendra A</span>
-      <span>AI/ML · Backend · Software Engineering</span>
-    </div>
-  </footer>
-
+  <footer><div class="container footer-inner"><span>© 2026 Yogendra A</span><span>AI/ML · Backend · Software Engineering</span></div></footer>
   <script>
-    const nav = document.getElementById('nav');
-    const menu = document.getElementById('menu');
-    const navLinks = document.getElementById('navLinks');
-
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
-
-    menu.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      menu.setAttribute('aria-expanded', String(open));
-    });
-
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        menu.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    const nav=document.getElementById('nav'),menu=document.getElementById('menu'),navLinks=document.getElementById('navLinks');
+    window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20),{passive:true});
+    menu.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
+    navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navLinks.classList.remove('open');menu.setAttribute('aria-expanded','false');}));
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   </script>
 </body>
 </html>
